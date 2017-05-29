@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :students]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :students, :enrollments]
 
   # GET /courses
   # GET /courses.json
@@ -68,6 +68,8 @@ class CoursesController < ApplicationController
   def students
   end
 
+  def enrollments
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course

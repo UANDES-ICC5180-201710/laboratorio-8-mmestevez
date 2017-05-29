@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<%= render 'enrollments/list', enrollment: @course.enrollments %>
+
+<br>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEnrollment">
+  Add student
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addEnrollment" tabindex="-1" role="dialog" aria-labelledby="addEnrollmentLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addEnrollmentLabel">Add student</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'enrollments/form', course: @course, enrollment: Enrollment.new %>
+      </div>
+    </div>
+  </div>
+</div>

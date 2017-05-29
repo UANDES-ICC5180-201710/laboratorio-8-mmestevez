@@ -1,27 +1,42 @@
 <%= form_for([course, assignment]) do |f| %>
-  <% if assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+    <% if assignment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
 
-      <ul>
-      <% assignment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% assignment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <div class="form_control">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+
+      <div class="form_control">
+        <%= f.label :statement %>
+        <%= f.text_area :statement, class: 'form-control' %>
+      </div>
+
+      <div class="form_control">
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date, :id => 'datetimepicker', :value => Date.today %>
+      </div>
+
+      <div class="form_control">
+        <%= f.label :end_date %>
+        <%= f.text_field :end_date, :id => 'datetimepicker', :value => Date.today %>
+      </div>
+
+      <div class="form-group actions">
+        <%= f.submit local_assigns[:submit_btn_text], class: 'btn btn-success' %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :statement %>
-    <%= f.text_area :statement %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+<script >
+    $('#datetimepicker').datetimepicker({format: 'yyyy-mm-dd'});
+</script>
